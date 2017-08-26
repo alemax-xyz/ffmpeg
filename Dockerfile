@@ -1,10 +1,17 @@
+#
+# This is a multi-stage build.
+# Actual build is at the very end.
+#
+
 FROM library/ubuntu:xenial AS build
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
+
 RUN apt-get update && \
     apt-get install -y \
-        xz-utils \
+        xz-utils
+RUN apt-get install -y \
         wget
 
 RUN mkdir -p /build/image/usr/bin
